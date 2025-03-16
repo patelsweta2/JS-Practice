@@ -37,3 +37,30 @@ console.log(child1.age);
 console.log(child1.hobby); 
 console.log(child1.greet()); 
 
+
+const bankAccount = {
+    accountHandler : "Sweta",
+    balance: 10000,
+    displayBalance: function (currency) {
+        console.log(`${this.accountHandler}, your balance is ${currency}${this.balance}`);
+    }
+};
+
+const userAccount = {
+    accountHolder: 'Kajal',
+    balance: 5000
+};
+
+bankAccount.displayBalance.call(userAccount, '$');
+
+
+function bookRide(source,destination){
+    console.log(`${this.name} booked a ride from ${source} to ${destination}`)
+}
+
+const user1 = {name: 'Sweta'};
+const user2 = {name: 'Kajal'};
+
+bookRide.call(user1, "Pune", "Mumbai");
+bookRide.call(user2, "Delhi","Agra");
+
