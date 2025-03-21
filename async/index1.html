@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>`
+<body>
+    <button id="fetchData">Click to start request</button>
+    <p id="status">Waiting for request....</p>
+    <script>
+        const button = document.getElementById('fetchData');
+        const status = document.getElementById("status");
+
+        button.addEventListener("click", () => {
+            const xhr = new XMLHttpRequest();
+
+            xhr.addEventListener('loadend', () => {
+                status.textContent = `Finished Status Code: ${xhr.status}`;
+            });
+
+            xhr.open("GET", "https://jsonplaceholder.typicode.com/todos/1");
+            xhr.send();
+            console.log('started XHR request')
+        })
+    </script>
+</body>
+</html>

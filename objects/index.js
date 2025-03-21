@@ -48,3 +48,27 @@ console.log(Object.getPrototypeOf(Object)) // Function.prototype
 console.log(Object.prototype(Object.prototype)) // null 
 
 
+const objectss = {
+    a: 1,
+    b: [2,3,4, {c: [5,6, {d:8}]}],
+    c:[5,6]
+}
+
+const sumNumbers = (data) => {
+    let sum = 0;
+    if(typeof data === "number"){
+        return data;
+    }
+    if(Array.isArray(data)){
+        for(let item of data){
+            sum+=sumNumbers(item);
+        }
+    }
+    if(typeof data === "object" && data !== null){
+        for(let key in data){
+            sum+=sumNumbers(data[key]);
+        }
+    }
+    return sum;
+}
+console.log(sumNumbers(obj));

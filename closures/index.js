@@ -1,49 +1,10 @@
-function outer() {
-    let count = 0;
-    function inner() {
-        count++;
-        console.log(count);
+// lexical scope -> A variable define outside of function can be accessible inside of another fun
+
+function init() {
+    var name = "Mozilla";
+    function displayName(){
+        console.log(name);
     }
-    return inner;
+    displayName();
 }
-
-const counter = outer();
-counter(); // 1
-counter(); // 2
-counter(); // 3
-
-
-function timer(){
-    for(var i = 1;i<=5;i++){
-        setTimeout(function(){
-            console.log(i)
-        },i*1000)
-    }
-}
-
-timer();
-
-// output -> 6,6,6,6,6
-
-function timer1(){
-    for(let i = 1;i<=5;i++){
-        setTimeout(function(){
-            console.log(i);
-        },i*1000);
-    }
-}
-timer1();
-
-// using IIFE
-function timer3(){
-    for(var i = 1;i<=5;i++){
-        (function(i){
-            setTimeOut(function(){
-                console.log(i);
-            },i*1000)
-        })(i);
-    }
-}
-timer3();
-
-
+init();
